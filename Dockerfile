@@ -22,5 +22,5 @@ ENV PYTHONUNBUFFERED=1
 
 EXPOSE 8000
 
-# Change the command to use uvicorn directly instead of langchain serve
-CMD ["poetry", "run", "python", "-m", "uvicorn", "app.server:app", "--host", "0.0.0.0", "--port", "8000"]
+# Fix the import error by using the full module path
+CMD ["uvicorn", "app.server:app", "--host", "0.0.0.0", "--port", "8000"]
