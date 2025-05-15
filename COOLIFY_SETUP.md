@@ -21,8 +21,11 @@ This guide will help you deploy the Financial Agent application on Coolify.
 
    - **Build Pack**: Dockerfile
    - **Base Directory**: / (root of the repository)
-   - **Port Expose**: 8000
-   - **Port Mappings**: 8000:8000
+   - **Port Configuration**:
+     - **IMPORTANT**: Check what ports are already in use on your server
+     - Set the container port to 8000 (internal port)
+     - For the public port, set a custom port like 8001 or 8080 that is not already in use
+     - Do not use port mapping directly in docker-compose.yml, let Coolify handle it
 
 5. Add the following environment variables:
 
@@ -46,17 +49,25 @@ This guide will help you deploy the Financial Agent application on Coolify.
 
 If you encounter issues with the deployment:
 
-1. Check the logs for errors related to missing environment variables.
-2. Ensure the port mappings are correctly set to 8000:8000.
+1. **Port conflict**: If you see an error about port 8000 being already allocated:
+
+   - Change the public port in Coolify UI to a different port (e.g., 8001, 8080, 9000)
+   - The application will still listen internally on port 8000 as configured in the Dockerfile
+
+2. Check the logs for errors related to missing environment variables.
+
 3. Verify that your API keys are valid and correctly set in the environment variables.
+
 4. Make sure the healthcheck is correctly configured and the `/health` endpoint is responding.
 
 ## Accessing the Application
 
 Once deployed, your application will be available at:
 
-`https://your-coolify-domain/agent/playground`
+`https://your-coolify-domain:public-port/agent/playground`
+
+Where `public-port` is the port you configured in Coolify for public access.
 
 You can also check the health of your application at:
 
-`https://your-coolify-domain/health`
+`https://your-coolify-domain:public-port/health`
