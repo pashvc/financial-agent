@@ -1,12 +1,13 @@
 # Financial Agent
 
-This is a financial agent built on Langchain and FastAPI. It can access current price, historical prices, latest news, and financial data for a ticker via the Polygon API. 
+This is a financial agent built on Langchain and FastAPI. It can access current price, historical prices, latest news, and financial data for a ticker via the Polygon API.
 
-The agent can compute financial metrics like owner earnings, return on equity, and return on invested capital.  The agent can also do a simple discounted cash flow valuation.
+The agent can compute financial metrics like owner earnings, return on equity, and return on invested capital. The agent can also do a simple discounted cash flow valuation.
 
 For a simple example of how this agent works, check out the colab notebook [here](https://colab.research.google.com/gist/virattt/de0423a505f8c7e28f79aef541f6dce0/langchain-financial-agent.ipynb).
 
-**Disclaimer**: The agent is **not** intended as financial advice.  The agent is for informational and entertainment purposes only.  As Warren Buffett says, do your own due diligence.
+**Disclaimer**: The agent is **not** intended as financial advice. The agent is for informational and entertainment purposes only. As Warren Buffett says, do your own due diligence.
+
 ## Deploy locally with Docker
 
 For easy install and secure containerized deployment, install the appropriate version of [Docker](https://www.docker.com/) for your operating system.
@@ -14,13 +15,13 @@ For easy install and secure containerized deployment, install the appropriate ve
 Next, open a terminal and build a Docker image from the remote repository:
 
 ```bash
-docker build -t virattt-financial-agent https://github.com/virattt/financial-agent.git
+docker build -t financial-agent git@github.com:pashvc/financial-agent.git
 ```
 
 Then, run the Docker container, replacing `$OPENAI_API_KEY` and `$POLYGON_API_KEY` in the following command with your OpenAI and Polygon API keys:
 
 ```bash
-docker run -e OPENAI_API_KEY=$OPENAI_API_KEY -e POLYGON_API_KEY=$POLYGON_API_KEY -p 8000:8000 --name financial-agent -it virattt-financial-agent
+docker run -e OPENAI_API_KEY=$OPENAI_API_KEY -e POLYGON_API_KEY=$POLYGON_API_KEY -p 8000:8000 --name financial-agent -it financial-agent
 ```
 
 Navigate to `http://localhost:8000/agent/playground/` in your browser to interact with the agent.
@@ -38,7 +39,7 @@ To deploy the agent locally without Docker, make sure you have an up-to-date ver
 Open a terminal, clone the repo to your local machine, and open the folder:
 
 ```bash
-git clone https://github.com/virattt/financial-agent.git
+git clone git@github.com:pashvc/financial-agent.git
 cd financial-agent
 ```
 
@@ -52,6 +53,7 @@ poetry shell
 ```
 
 **Important**: To use this agent, you will need an OpenAI API key and a Polygon API key.
+
 - If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/).
 - If you don't have a Polygon API key, you can get one [here](https://polygon.io/).
 
@@ -80,4 +82,4 @@ Then navigate to `http://localhost:8000/agent/playground/` in your browser!
 
 ## Questions?
 
-Feel free to reach out to me on X [here](https://twitter.com/virattt).
+Feel free to reach out to Pavel Sukhachev or the original author on X [here](https://twitter.com/virattt).

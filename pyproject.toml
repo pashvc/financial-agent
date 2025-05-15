@@ -2,7 +2,7 @@
 name = "financial-agent"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Pavel Sukhachev <pavel@example.com>"]
 readme = "README.md"
 packages = [
     { include = "app" },
