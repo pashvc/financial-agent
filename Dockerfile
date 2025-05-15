@@ -4,8 +4,9 @@ RUN pip install poetry==1.6.1
 
 WORKDIR /code
 
-# Copy the app directory first along with poetry files
+# Copy essential files first
 COPY app /code/app/
+COPY README.md /code/
 COPY pyproject.toml poetry.lock* /code/
 
 # Install dependencies 
