@@ -4,12 +4,15 @@ RUN pip install poetry==1.6.1
 
 WORKDIR /code
 
+# Copy the app directory first along with poetry files
+COPY app /code/app/
 COPY pyproject.toml poetry.lock* /code/
 
-# Install dependencies first for better caching
+# Install dependencies 
 RUN poetry config virtualenvs.create false \
     && poetry install --no-interaction --no-ansi
 
+# Then copy the rest of the files
 COPY . /code/
 
 # Set environment variables
